@@ -1,0 +1,19 @@
+My Project complete info:
+
+Lumina project depends on Eccomerse
+
+They have websites where they update new features on regular basis it requires cicd pipline and EKS kubernetes to work
+
+my tools
+
+:->
+
+devloper push to  ---> Github --> jekin pulls the code --> Run tests junit tests ---> file scans on trivy ----> Sonarqube for code qyality
+maven is used for build the artifacts ----> it stores in to S3 ----> Jenkins builds the dockers image ----> Scaned the images by trivy---->stores it into ECR 
+---> Jenkins updates the build number to the mainifist ---> Argocd pulls the mainifist files --> deploy on Eks cluster.
+
+
+Complete CICD monitoried by
+Prometeous: used collect the metrics from all jenkins,Docker,Kubernetes
+
+graphana : Monitoring purpose and check the application health
