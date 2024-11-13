@@ -10,9 +10,32 @@
 
 
 🔹 Question 2: Why might a Kubernetes pod be stuck in the "Pending" state, and how do you resolve it?
+A Kubernetes pod can be stuck in the “Pending” state due to several reasons:
+	1.	Insufficient Resources: Not enough CPU/memory on nodes.
+	•	Fix: Free up resources or adjust pod’s resource requests.
+	2.	Node Affinity/Taints: Node constraints or taints preventing scheduling.
+	•	Fix: Check and adjust node affinity, or add tolerations to the pod.
+	3.	PVC Binding Issues: Persistent volume claim not bound to a persistent volume.
+	•	Fix: Ensure PV is available and matches PVC requirements.
+	4.	Image Pull Issues: Unable to pull the container image.
+	•	Fix: Verify image name and registry credentials.
+	5.	Quota Limitations: Resource quotas preventing new pods.
+	•	Fix: Check and adjust resource quotas.
+	6.	Scheduler Issues: No suitable node found for the pod.
+	•	Fix: Check pod constraints and scheduler logs.
+	7.	Pod Priority: Higher-priority pods occupying resources.
+	•	Fix: Adjust pod priorities or scale down higher-priority pods.
+
+To troubleshoot, use kubectl describe pod <pod-name> and check events for detailed information.
+
 
 
 🔹 Question 3: What does the error "ImagePullBackOff" indicate, and how do you fix it?
+
+
+
+
+
 🔹 Question 4: How do you resolve the "ErrImagePull" error in Kubernetes?
 🔹 Question 5: What might cause a pod to remain in the "Terminating" state indefinitely, and how do you resolve it?
 🔹 Question 6: What is a "NodeNotReady" error, and how do you troubleshoot it?
