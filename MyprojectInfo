@@ -17,3 +17,24 @@ Complete CICD monitoried by
 Prometeous: used collect the metrics from all jenkins,Docker,Kubernetes
 
 graphana : Monitoring purpose and check the application health
+
+
+Complete Project deployment
+https://github.com/PrasadDaCDH/DevOps-Projects/tree/master/DevOps-Project-16
+
+Real Time DevOps Project | Deploy to Kubernetes Using Jenkins | End to End DevOps Project | CI/CD
+
+Few Terraform Code
+
+For EKS Terraform
+https://github.com/DevCloudNinjas/AWS-EKS_Terraform
+https://github.com/DevCloudNinjas/deploy-eks-cluster-terraform
+
+All Devops Tools information:
+https://github.com/DevCloudNinjas/devops-tools
+
+Devops aws project:
+https://github.com/PrasadDaCDH/DevOps-Projects/tree/master/DevOps-Project-26
+
+Blogging Project:
+https://github.com/PrasadDaCDH/DevOps-Projects/tree/master/full-stack-blogging-app
