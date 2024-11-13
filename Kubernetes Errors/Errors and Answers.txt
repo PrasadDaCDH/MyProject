@@ -1,0 +1,27 @@
+ Question 1: What causes the error "CrashLoopBackOff" in a Kubernetes pod, and how do you troubleshoot it?
+:->
+	Indicates that pod is starting and crashing and kubernetes restarting it again and again
+	Resolution:
+	Check the logs: kubectl logs podname
+			kubectl describe pod podname
+	Can be related to incorrect envirnment variables
+	Failed dependancies
+	missconfiguration in containers commands
+
+
+🔹 Question 2: Why might a Kubernetes pod be stuck in the "Pending" state, and how do you resolve it?
+
+
+🔹 Question 3: What does the error "ImagePullBackOff" indicate, and how do you fix it?
+🔹 Question 4: How do you resolve the "ErrImagePull" error in Kubernetes?
+🔹 Question 5: What might cause a pod to remain in the "Terminating" state indefinitely, and how do you resolve it?
+🔹 Question 6: What is a "NodeNotReady" error, and how do you troubleshoot it?
+🔹 Question 7: How do you address a "PVC not bound" error in Kubernetes?
+🔹 Question 8: What does the "Error syncing pod" message mean, and how do you troubleshoot it?
+🔹 Question 9: Why might a Kubernetes service not be accessible from within the cluster, and how do you resolve it?
+🔹 Question 10: How do you fix the "Failed to create pod sandbox" error?
+🔹 Question 11: What causes "FailedScheduling" errors in Kubernetes, and how do you resolve them?
+🔹 Question 12: How do you resolve "etcdserver: request timed out" errors in Kubernetes?
+🔹 Question 13: Why might a "kubectl exec" command fail, and how do you troubleshoot it?
+🔹 Question 14: How do you fix a "service is not external IP" error in Kubernetes?
+🔹 Question 15: How do you resolve "certificate signed by unknown authority" errors in Kubernetes?
