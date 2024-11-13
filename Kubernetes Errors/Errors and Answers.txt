@@ -130,8 +130,21 @@ Additional Tips:
 By following these steps and considering the potential causes, you can effectively troubleshoot and resolve NodeNotReady errors in your Kubernetes cluster.
 
 
+
 🔹 Question 7: How do you address a "PVC not bound" error in Kubernetes?
+Resolving "PVC Not Bound" Error:
+ * Check PV Availability: Ensure sufficient PVs with matching storage class and access modes.
+ * Verify PVC Specifications: Check storage class, access modes, and storage requirements.
+ * Inspect Node Capacity: Verify that the node has enough disk space.
+ * Examine Volume Plugin: Ensure the volume plugin is functioning correctly.
+ * Force Binding (Caution): Manually bind the PVC to a PV, but use with care.
+ * Recreate PVC: As a last resort, delete and recreate the PVC.
+By following these steps and considering the potential causes, you can effectively troubleshoot and resolve the "PVC not bound" error in your Kubernetes environment.
+
+
 🔹 Question 8: What does the "Error syncing pod" message mean, and how do you troubleshoot it?
+
+
 🔹 Question 9: Why might a Kubernetes service not be accessible from within the cluster, and how do you resolve it?
 🔹 Question 10: How do you fix the "Failed to create pod sandbox" error?
 🔹 Question 11: What causes "FailedScheduling" errors in Kubernetes, and how do you resolve them?
