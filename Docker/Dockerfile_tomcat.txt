@@ -1,0 +1,10 @@
+FROM ubuntu
+RUN apt install java -y
+COPY . /opt/
+EXPOSE 8080
+ENTRYPOINT ["/opt/tomcat/catalina.sh"]
+CMD ["run"]
+
+
+#docker built -t tomcat .
+#docker run -p 8080:8080 tomcat
