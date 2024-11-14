@@ -1,6 +1,6 @@
 
 1>
-ImagePullBackOff ERROR:
+**ImagePullBackOff** ERROR:
 	1>IF the image name is not correct
 	2>Image is not present at ECR (docker Hub)
 	3>container image is private (secure)
@@ -8,6 +8,12 @@ ImagePullBackOff ERROR:
 	Solutions:-> TO get the private images you can use **ImagePullSecret** in deployement mainifest and pass the secret here
 	
 
+2>
+**CrashLoopBackOff**
+	1>
+ 	2>
+  	3>
+   	4>
 
 Question 1: What causes the error "CrashLoopBackOff" in a Kubernetes pod, and how do you troubleshoot it?
 :->
