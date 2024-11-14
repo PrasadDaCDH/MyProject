@@ -4,6 +4,7 @@
 	1>IF the image name is not correct
 	2>Image is not present at ECR (docker Hub)
 	3>container image is private (secure)
+ 
 	Solutions:-> TO get the private images you can use **ImagePullSecret** in deployement mainifest and pass the secret here
 	
 
