@@ -53,6 +53,12 @@ Soultion:-> Check if there are any configuration mistakes
      	:-> NoExecute (all the running pods will be deleted)
       	:-> PrefredNoToschedule (only schedule as a last option)
 
+       4>Tolerations:
+       	When the pods are Unscadulable but you want to run Pods still on because it has high priority
+	then we will use toleartions that we have given in command for taints in mainifests.
+ 	#kubectl taint nodes nodename key1=value1:NoSchedule
+
+ 	
        
 
 Question 1: What causes the error "CrashLoopBackOff" in a Kubernetes pod, and how do you troubleshoot it?
