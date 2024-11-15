@@ -23,3 +23,24 @@ To switch to the cluster you want
 #kubectl use-context Cluster_name
 
 
+kubectl config use-context my-cluster-name           # set the default context to my-cluster-name
+
+kubectl config set-cluster my-cluster-name           # set a cluster entry in the kubeconfig
+
+# configure the URL to a proxy server to use for requests made by this client in the kubeconfig
+kubectl config set-cluster my-cluster-name --proxy-url=my-proxy-url
+
+# add a new user to your kubeconf that supports basic auth
+kubectl config set-credentials kubeuser/foo.kubernetes.com --username=kubeuser --password=kubepassword
+
+# permanently save the namespace for all subsequent kubectl commands in that context.
+kubectl config set-context --current --namespace=ggckad-s2
+
+# set a context utilizing a specific username and namespace.
+kubectl config set-context gce --user=cluster-admin --namespace=foo \
+  && kubectl config use-context gce
+
+kubectl config unset users.foo                       # delete user foo
+
+
+
