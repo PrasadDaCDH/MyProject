@@ -12,12 +12,19 @@
 **CrashLoopBackOff**
 	1>If Configuration mistakes
  	2>If referencing persistent volume that does not exist
-  	3>Error in liveness probes which is used for health checks **readyness probe is used to check your pod is health to recive traffic or not**
-   	4>Memory set is too low
-    	Soultion:-> To the namespace level the Resource quota must be set and to the pod level we set Resource limits
-    	
+  	3>Error in liveness probes which is used for health checks 
+   	:->
+    
+   	**readyness probe is used to check your pod is health to recive traffic or not**
+   
+    	4>Memory set is too low (OOM killed Error)
+     	Soultion:-> 
+      	To the namespace level the Resource quota must be set and to the pod level we set Resource limits
+	the pod level limit are set : resource limit
+
+  	
      	5>wrong cmd line arguments
-     	6>Errors or exceptions with application
+     	6>Errors or exceptions with the application
 
 Soultion:-> Check if there are any configuration mistakes
 	:-> Check the Liveness probe parameters 
