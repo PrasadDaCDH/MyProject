@@ -29,7 +29,31 @@
 Soultion:-> Check if there are any configuration mistakes
 	:-> Check the Liveness probe parameters 
  	:-> Check the memory and that is required for the pods presnet or not
-  	
+
+
+3> **The pods are stucked into Pending state**
+
+	1>The issue can be related to the node that the pod wants to run is not running
+ 	:-> Check the node selector label and see if that node is running or not
+  	    Add label to the node and add nodeselector to the deployment file given
+
+       2>Node Affinity:->
+       	When the pods we want to launch on certain nodes or want to launch even if node is not found
+	with Affinity
+ 
+       	:-> Check if the Affinity that has given requried affinity or Perfered affinity
+	:-> In prefered if does not find the matching lable for the pods to launch on nodes it will 
+ 	    launch on any available nodes
+      	
+ 	3>Taints:
+  	When you want to upgrade the nodes or you don't want it to schadule for any pods then you can use
+   	taints
+    	#kubectl taint nodes nodename key1=value1:NoSchedule
+    	:-> Noschedule ( don't schedule any pods on it)
+     	:-> NoExecute (all the running pods will be deleted)
+      	:-> PrefredNoToschedule (only schedule as a last option)
+
+       
 
 Question 1: What causes the error "CrashLoopBackOff" in a Kubernetes pod, and how do you troubleshoot it?
 :->
