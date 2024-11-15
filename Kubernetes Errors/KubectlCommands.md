@@ -12,6 +12,14 @@ To get the deployment info
 
 3>**Secrets management commands**
 To create Secret in kubernetes 
+:->
 
-**kubectl create secret docker-restory **
+**#kubectl create secret docker-restory **
+
+4>**To get the config info of all the kubernetes cluster that kubeconfig is connected to **
+#kubectl config view
+To switch to the cluster you want
+
+#kubectl use-context Cluster_name
+
 
