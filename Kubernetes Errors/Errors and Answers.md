@@ -10,25 +10,22 @@
 
 2>
 **CrashLoopBackOff**
-	1>If Configuration mistakes
- 	2>If referencing persistent volume that does not exist
-  	3>Error in liveness probes which is used for health checks 
-   	:->
-    
-   	**readyness probe is used to check your pod is health to recive traffic or not**
+	1>If there are missConfiguration mistakes for example envionment variable is not set correct (database connection) this will lead to crashloop back off
+ 	2>Liveness prob is not configurred correctly (example the application is not exposed to the port)
+  	3>Memmory limits exceds by the application (kubernetes will kill the pod and launch it again) OOM error will also result in CrashLoopBackOff
+   	4>Wrong command line argument has been passed in docker or the path does not exists or not accessable
+    	5>Bugs in the application (Exception handeling is not done correnctly for the application it results in crashloop again.
+     
+   	**readyness probe is used to check your pod is Ready to recive traffic or not**
    
     	4>Memory set is too low (OOM killed Error)
      	Soultion:-> 
       	To the namespace level the Resource quota must be set and to the pod level we set Resource limits
 	the pod level limit are set : resource limit
 
-  	
-     	5>wrong cmd line arguments
-     	6>Errors or exceptions with the application
-
 Soultion:-> Check if there are any configuration mistakes
 	:-> Check the Liveness probe parameters 
- 	:-> Check the memory and that is required for the pods presnet or not
+ 	:-> Check the memory and that is required for the pods present or not
 
 
 3> **The pods are stucked into Pending state**
