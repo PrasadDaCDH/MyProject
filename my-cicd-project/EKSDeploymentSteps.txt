@@ -1,0 +1,67 @@
+Eks Complete project deploymet:
+
+Prequisites:
+
+1>kubectl
+2>AWSCLi
+3>Eksctl
+
+all these need to be installed on the machine from where to want to launch the eks
+
+OpenId connect provider url :-> is used as identity provoider to give services access to AWS service 
+to attach with the service accont so the pods can talk to the AWS service we need OpenId connecter provieder
+
+OIDC connecter needs to be configered for pods to communicate and use AWS services 
+
+after that
+
+Policy is created and attached to the role and role is attached to the service account and that service account is attached to the controller.
+
+
+
+eksctl create cluster --name demo-cluster --region ap-south-1 --fargate
+
+export cluster_name=demo-cluster
+
+eksctl utils associate-iam-oidc-provider --cluster $cluster_name --approve
+
+eksctl create fargateprofile \
+    --cluster demo-cluster \
+    --region ap-south-1 \
+    --name alb-sample-app \
+    --namespace game-2048
+
+aws eks update-kubeconfig --name demo-cluster
+
+kubectl get nodes
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.5.4/docs/examples/2048/2048_full.yaml
+
+curl -O https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.5.4/docs/install/iam_policy.json
+
+aws iam create-policy \
+    --policy-name AWSLoadBalancerControllerIAMPolicy-2 \
+    --policy-document file://iam_policy.json
+	
+eksctl create iamserviceaccount \
+  --cluster=demo-cluster \
+  --namespace=kube-system \
+  --name=aws-load-balancer-controller \
+  --role-name AmazonEKSLoadBalancerControllerRole \
+  --attach-policy-arn=arn:aws:iam::767397903991:policy/AWSLoadBalancerControllerIAMPolicy-2 \
+  --approve
+
+helm repo add eks https://aws.github.io/eks-charts
+
+helm repo update eks
+
+helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
+  -n kube-system \
+  --set clusterName=demo-cluster \
+  --set serviceAccount.create=false \
+  --set serviceAccount.name=aws-load-balancer-controller \
+  --set region=ap-south-1 \
+  --set vpcId=vpc-06ef93a6bb0a9ff6d
+  
+kubectl get deployment -n kube-system aws-load-balancer-controller
+
