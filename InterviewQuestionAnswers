@@ -47,6 +47,7 @@ or
 TO prevent it from deletion enable Versioning, Mfa delete and Cross region replication for the statefile
   
 
+
 5. How do you import resources into Terraform?
   
   #terraform import aws_instance.name id  
@@ -62,6 +63,8 @@ or
   to = aws_subnet.name
   id = ""
   }
+
+
 6. What is a dynamic block in Terraform?
 When you want to use same resource multiple times that time will create code complexity 
 to reduce it we can use dynamic block which uses For-each and dynamic and local blocks which then will fetch the value
@@ -99,6 +102,27 @@ Declaring it in the spec:volumes property of the pod template, and then deployin
 
 
 12. If a pod is in a crash loop, what might be the reasons, and how can you recover it?
+-->
+OOMKilled error can result in crash loop backoff after setting resource Quota and resource limits also
+if the pod is leaking more memory then we take
+->Thread dump
+->Heap dump
+
+#kubectl exec -it herle-deployment-pod-5757d89d85-wrpc9 bash
+
+#get the process id (top command)
+
+#jmap -dump:live,format=b,file=application_heap_dump.bin 1
+
+#kubectl cp <pod_name>:<heap_file> <your local destination directory>
+
+Q)How to upgrade?
+1>create a manual with detailed steps
+2>Backup steps
+3>Read the relaease notes
+4>Control plane with ETCD,Scheduler,controllers
+5>workernodes: Drain the nodes make them unschedulable using taints and then upgrade the kubelet
+
 13. What is the difference between StatefulSet and DaemonSet?
 14. What is a sidecar container in Kubernetes, and what are its use cases?
 15. If pods fail to start during a rolling update, what strategy would you use to identify the issue and rollback?
