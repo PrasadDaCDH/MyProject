@@ -1,0 +1,49 @@
+
+#Creating Namespace in kubectl:
+
+	kubectl create namespace quota-mem-cpu-example
+
+Creating Resource quota on namespace level
+
+		apiVersion: v1
+		kind: ResourceQuota
+		metadata:
+		  name: mem-cpu-demo
+		spec:
+		  hard:
+			requests.cpu: "1"
+			requests.memory: 1Gi
+			limits.cpu: "2"
+			limits.memory: 2Gi
+
+To apply the quota:
+	kubectl apply -f quota.yml
+
+To get the resourcequota  for the namespace:
+	kubectl get resourcequota mem-cpu-demo --namespace=quota-mem-cpu-example --output=json
+
+#Now set Resource quota on pod level:
+	apiVersion: v1
+	kind: Pod
+	metadata:
+	  name: quota-mem-cpu-demo
+	spec:
+	  containers:
+	  - name: quota-mem-cpu-demo-ctr
+		image: nginx
+		resources:
+		  limits:
+			memory: "800Mi"
+			cpu: "800m"
+		  requests:
+			memory: "600Mi"
+			cpu: "400m"
+
+
+To check the available clusters:
+
+	kubectl config get-contexts
+
+To set the default context:
+	kubectl config use-context <cluster name>
+	
