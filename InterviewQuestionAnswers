@@ -1,0 +1,123 @@
+*Common interview Question For Cloud & DevOps*
+
+1. What scripting languages are you familiar with?
+Python and Bash.
+2. What are artifacts in GitLab CI?
+What they are: Artifacts are files that are generated as a result of a build process. They can contain metadata about the build's jobs, such as security scans and test results. 
+How they are created: Artifacts are created by a job and are a list of files and directories. 
+How they are used: Artifacts can be used by subsequent jobs or stages
+So let’s say you want to build a food delivery app. So fist you will write all of it’s source code, then you will 
+download all the required dependencies ( libraries & frameworks ) .
+Then you will start building your software, in building you are basically taking your code and your dependencies 
+and putting them together into a single executable file.
+In java this file can be .jar or .war or .ear files. For windows projects this executable file will be a .exe file.
+These executables are called artifacts.
+
+3. What is a private module registry in Terraform?
+ Terraform is a repository for storing and managing Terraform modules that are not intended to be shared publicly. Private module registries
+
+4> How to create Secrets for ECR in AWS using Kubectl?
+kubectl create secret docker-registry regcred \
+  --docker-server=${AWS_ACCOUNT}.dkr.ecr.${AWS_REGION}.amazonaws.com \
+  --docker-username=AWS \
+  --docker-password=$(aws ecr get-login-password) \
+  --namespace=health-check
+
+Use ImagePullSecret:
+      name: regcred #in the deployment.yml file.
+
+
+
+4. If you delete the local Terraform state file and it's not stored in S3 or DynamoDB, how can you recover it?
+:-> TO import it we can do 
+  #terraform import aws_instance.name id  
+  you can do this one by one 
+or
+  You can create import.tf use import block inside the tf file
+  import {
+  to = aws_vpc.name
+  id = ""
+  }
+
+  import {
+  to = aws_subnet.name
+  id = ""
+  }
+
+TO prevent it from deletion enable Versioning, Mfa delete and Cross region replication for the statefile
+  
+
+5. How do you import resources into Terraform?
+  
+  #terraform import aws_instance.name id  
+  you can do this one by one 
+or
+  You can create import.tf use import block inside the tf file
+  import {
+  to = aws_vpc.name
+  id = ""
+  }
+
+  import {
+  to = aws_subnet.name
+  id = ""
+  }
+6. What is a dynamic block in Terraform?
+When you want to use same resource multiple times that time will create code complexity 
+to reduce it we can use dynamic block which uses For-each and dynamic and local blocks which then will fetch the value
+as per given.
+
+7. How can you create EC2 instances in two different AWS accounts simultaneously using Terraform?
+We will make the other accout roles for all account and make the one account role should have policy attached to the role to assume role of another account
+
+8. How do you handle an error stating that the resource already exists when creating resources with Terraform?
+#terraform import aws_instance.name id  
+
+9. How does Terraform refresh work?
+he terraform refresh command is used to reconcile the state Terraform knows about (via its state file) 
+with the real-world infrastructure. This can be used to detect any drift from the last-known state and to update the state file. 
+terraform apply -refresh-only
+
+10. How would you upgrade Terraform plugins?
+terraform init -upgrade 
+
+
+11. What are the different types of Kubernetes volumes?
+Persistent volumes
+These volumes retain data even after a pod shuts down. Examples of persistent volume types include AWS EBS, vSphere volume, Azure File, GCE Persistent Disk, iSCSI, NFS, and Host Path. 
+Ephemeral volumes
+These volumes are temporary and are deleted when a pod is removed from a node. 
+EmptyDir volumes
+These volumes are useful for storing temporary data like caches, logs, and scratch data. They can be used with other types of volumes to provide persistent storage. 
+hostPath volumes
+These volumes refer to a directory created on the node where the pod is running. They should be used with caution because each node gets its own hostPath storage volume when pods are scheduled on multiple nodes. 
+StorageClass
+This represents a type of storage, such as fast SSD storage, magnetic drives, or remote cloud storage. Kubernetes clusters can use StorageClass to configure various types of storage based on workload requirements. 
+Kubernetes supports multiple volumes, allowing each pod to use several volume types at the same time. 
+
+Declaring it in the spec:volumes property of the pod template, and then deploying the pod on some nodesMounting the volume to a specific container using the spec:containers:<name>:volumeMounts property
+
+
+12. If a pod is in a crash loop, what might be the reasons, and how can you recover it?
+13. What is the difference between StatefulSet and DaemonSet?
+14. What is a sidecar container in Kubernetes, and what are its use cases?
+15. If pods fail to start during a rolling update, what strategy would you use to identify the issue and rollback?
+16. How can we enable communication between 500 AWS accounts internally?
+17. How to configure a solution where a Lambda function triggers on an S3 upload and updates DynamoDB?
+18. What is the standard port for RDP?
+19. How do you configure a Windows EC2 instance to join an Active Directory domain?
+20. How can you copy files from a Linux server to an S3 bucket?
+21. What permissions do you need to grant for that S3 bucket?
+22. What are the different types of VPC endpoints and when do you use them?
+23. How to resolve an image pullback error when using an Alpine image pushed to ECR in a pipeline?
+24. What is the maximum size of an S3 object?
+25. What encryption options do we have in S3?
+26. Can you explain IAM user, IAM role, and IAM group in AWS?
+27. What is the difference between an IAM role and an IAM policy document?
+28. What are inline policies and managed policies?
+29. How can we add a load balancer to Route 53?
+30. What are A records and CNAME records?
+31. What is the use of a target group in a load balancer?
+32. If a target group is unhealthy, what might be the reasons?
+33. Can you share your screen and write a Jenkins pipeline?
+34. How do you write parallel jobs in a Jenkins pipeline?
