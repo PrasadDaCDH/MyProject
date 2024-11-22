@@ -1,181 +1,92 @@
-Here’s a list of **basic Docker commands** for troubleshooting containers, images, and networks:
 
----
-
-### **1. Check Docker Status**
-- Ensure Docker is running:
-  ```bash
-  systemctl status docker
-  ```
-
-- Start Docker if it's not running:
-  ```bash
-  systemctl start docker
-  ```
-
----
 
 ### **2. Inspect Running Containers**
 - **List all containers**:
-  ```bash
   docker ps
-  ```
 
 - **List all (including stopped) containers**:
-  ```bash
   docker ps -a
-  ```
 
 - **Inspect a specific container**:
-  ```bash
   docker inspect <container_id>
-  ```
 
 - **View resource usage of containers**:
-  ```bash
   docker stats
-  ```
-
----
 
 ### **3. Check Logs**
 - View logs of a container:
-  ```bash
   docker logs <container_id>
-  ```
 
 - Follow logs in real-time:
-  ```bash
   docker logs -f <container_id>
-  ```
-
----
 
 ### **4. Access a Container**
 - Start a shell inside a container:
-  ```bash
   docker exec -it <container_id> /bin/bash
-  ```
 
 - For Alpine or minimal images:
-  ```bash
   docker exec -it <container_id> /bin/sh
-  ```
-
----
 
 ### **5. Troubleshoot Container Issues**
 - **Check container status**:
-  ```bash
   docker ps -a
-  ```
 
 - **Restart a container**:
-  ```bash
   docker restart <container_id>
-  ```
 
 - **Stop a container**:
-  ```bash
   docker stop <container_id>
-  ```
 
 - **Remove a stopped container**:
-  ```bash
   docker rm <container_id>
-  ```
-
----
 
 ### **6. Troubleshoot Image Issues**
 - **List all images**:
-  ```bash
   docker images
-  ```
 
 - **Remove an image**:
-  ```bash
   docker rmi <image_id>
-  ```
 
 - **Force-remove an image**:
-  ```bash
   docker rmi -f <image_id>
-  ```
-
----
 
 ### **7. Troubleshoot Network Issues**
 - **List all networks**:
-  ```bash
   docker network ls
-  ```
 
 - **Inspect a network**:
-  ```bash
   docker network inspect <network_name>
-  ```
 
 - **Connect a container to a network**:
-  ```bash
   docker network connect <network_name> <container_id>
-  ```
 
 - **Disconnect a container from a network**:
-  ```bash
   docker network disconnect <network_name> <container_id>
-  ```
-
----
 
 ### **8. Check Disk Usage**
 - View Docker disk usage:
-  ```bash
   docker system df
-  ```
-
----
 
 ### **9. Clean Up Unused Resources**
 - **Remove stopped containers**:
-  ```bash
   docker container prune
-  ```
 
 - **Remove unused images**:
-  ```bash
   docker image prune
-  ```
 
 - **Remove all unused resources**:
-  ```bash
   docker system prune
-  ```
-
----
 
 ### **10. Debug with Verbose Output**
 - Run Docker with debug logs:
-  ```bash
   docker --debug <command>
-  ```
-
----
 
 ### Common Use Case Commands
 - **Find container consuming a specific port**:
-  ```bash
   docker ps --filter "publish=<port>"
-  ```
 
 - **Kill a stuck container**:
-  ```bash
   docker kill <container_id>
-  ```
 
 - **Rebuild and restart quickly**:
-  ```bash
   docker-compose up --build
-  ```
-
-Let me know if you’d like to explore any specific command in more detail!
